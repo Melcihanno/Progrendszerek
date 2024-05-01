@@ -1,0 +1,58 @@
+<div id="header">
+    <app-top-menu></app-top-menu>
+</div>
+<div class="container">
+    <div class="left-side">
+        <div class="login-container">
+            <form class="login-form" [formGroup]="paintingForm" (ngSubmit)="onSubmit()">
+                <h1>Festmény feltöltése</h1>
+                <input formControlName="name" type="test" placeholder="Festmény neve" required  />
+                <input formControlName="description" type="text" placeholder="Leírás" />
+                <input formControlName="artist_name" type="text" placeholder="Művész neve" required/>
+                <input formControlName="col_group" type="text" placeholder="Kollekció neve" required/>
+                <input formControlName="year" type="number" placeholder="Készült (év)" required/>
+                <div>
+                    <input formControlName="sold" id="eladom" type="radio" name="sold" value="True"/>
+                    <label for="eladom">Eladva</label>
+                    <input formControlName="sold" id="arulom" type="radio" name="sold" value="False" checked/>
+                    <label for="arulom">Még árulom</label>
+                </div>
+                <input formControlName="price" type="number" placeholder="Eladási Ár - (Ft)" required />
+                <input formControlName="source" type="text" placeholder="Festmény URL link" required />
+                <div class="buttons">
+                    <button type="submit">Feltöltés</button>
+                </div>
+                <div class="buttons">
+                    <button type="reset" (click)="goBack()">Vissza</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="right-side">
+        <mat-grid-list cols="2">
+            <mat-grid-tile *ngFor="let painting of paintings">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title>{{painting.name}}</mat-card-title>
+                        <mat-card-subtitle>{{painting.description}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <img mat-card-image width="80%" src="{{painting.source}}"/>
+                        <p><b>Készült({{painting.year}})    Festő: {{painting.artist_name}}</b></p>
+                        <p><b>Kollekció neve: {{painting.col_group}}</b></p>
+                        <p><b>Ár: {{painting.price}}Ft</b></p>
+                        <p>{{painting.email}}</p>
+                        <p>{{painting.sold ? 'Eladva' :'Eladó'}}</p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-flat-button color="warn" (click)="deletePainting(painting.name)">Törlés</button>
+                    </mat-card-actions>
+                </mat-card>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+</div>
+
+<ng-template #noPaintingTemplate>
+    <p>You have no paintings yet.</p>
+</ng-template>

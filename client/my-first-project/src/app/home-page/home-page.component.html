@@ -1,0 +1,85 @@
+<div id="header">
+    <app-top-menu></app-top-menu>
+</div>
+
+<div class="cimszalag">    
+    <h1>Újdonságok</h1>
+</div>
+<div class="cardok">
+    <mat-grid-list cols="4">
+        <mat-grid-tile *ngFor="let painting of paintings">
+            <mat-card>
+                <!-- <mat-card-header>
+                    <mat-card-title>{{painting.name}}</mat-card-title>
+                    <mat-card-subtitle>{{painting.description}}</mat-card-subtitle>
+                </mat-card-header> -->
+                <mat-card-content>
+                    <div>
+                        <img mat-card-image src="{{painting.source}}"/>
+                    </div>
+                    <p>{{painting.artist_name}}</p>
+                    <p>Ár: {{painting.price}}Ft</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button (click)="watchpainting(painting)">Megtekintés</button>
+                </mat-card-actions>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+<div class="cimszalag">    
+    <h1>Művészeink</h1>
+</div>
+<div class="container">
+    <div class="left-side">
+    <p><i>Bob Ross</i></p>
+    <p>
+        Bob Ross az amerikai festőművész, aki az "The Joy of Painting" című televíziós műsorral vált ismertté. Ross hihetetlenül népszerű lett nem csak a festőművészet iránt érdeklődők körében, hanem azok között is, akik szerették volna egy kis nyugalmat és boldogságot találni a művészet által.
+    </p>
+    <p>
+        Ross stílusa egyedi volt; a vászonra festett gyönyörű tájképeket gyakran a természet és az idillikus vidék ihlette. Rendkívül hatékonyan tudta megosztani a festés örömét és a technikákat, miközben arra bátorította a nézőket, hogy merjenek kreatívak lenni és élvezzék a festés folyamatát.
+    </p>
+    <p>
+        Egyik legismertebb jellemzője a gyors festési módszer volt, amely lehetővé tette számára, hogy gyönyörű tájakat hozzon létre néhány egyszerű ecsetvonással és technikával. Ross gyakran használta a "happy accidents" kifejezést, amely arra utal, hogy még a véletlen festési hibák is átalakíthatják a műalkotást valami pozitív és egyedi művészeti alkotássá.
+    </p>
+    <p>
+        A műsora és stílusa örökre nyomot hagyott a művészet világában, és még évekkel azután is, hogy elhunyt, Bob Ross és művei továbbra is inspirálják és örömet okoznak az embereknek világszerte.
+    </p>
+    </div>
+    <div class="right-side">
+        <img src="https://globalnews.ca/wp-content/uploads/2023/09/GettyImages-50467803.jpg?quality=85&strip=all&w=1200"/>
+    </div>
+</div>
+<div class="cimszalag">    
+    <button>Vásárlás</button>
+</div>
+
+<br>
+<div class="cimszalag">    
+    <h1>Klasszikusok</h1>
+</div>
+<div class="cardok">
+    <mat-grid-list cols="4">
+        <mat-grid-tile *ngFor="let painting of paintings">
+            <mat-card>
+                <!-- <mat-card-header>
+                    <mat-card-title>{{painting.name}}</mat-card-title>
+                    <mat-card-subtitle>{{painting.description}}</mat-card-subtitle>
+                </mat-card-header> -->
+                <mat-card-content>
+                    <div>
+                        <img mat-card-image src="{{painting.source}}"/>
+                    </div>
+                    <p>{{painting.artist_name}}</p>
+                    <p>Ár: {{painting.price}}Ft</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button (click)="watchpainting(painting)">Megtekintés</button>
+                </mat-card-actions>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
+<app-footer>
+</app-footer>
