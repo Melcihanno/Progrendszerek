@@ -243,7 +243,8 @@ export const configureRoutes = (passport: PassportStatic, router: Router): Route
         const max_attendees = req.body.max_attendees;
         const img_source = req.body.img_source;
         const price = req.body.price;
-        const painting = new Event({name: name,description: description,artist_name:artist_name,date:date,max_attendees:max_attendees,img_source:img_source,price:price});
+        const attendees = 'undefined';
+        const painting = new Event({name: name,description: description,artist_name:artist_name,date:date,max_attendees:max_attendees,img_source:img_source,price:price,attendees:attendees});
         painting.save().then(data => {
             res.status(200).send(data);
         }).catch(error => {

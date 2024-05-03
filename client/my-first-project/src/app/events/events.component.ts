@@ -10,6 +10,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { EventsService } from '../shared/services/events.service';
 import { Route, Router } from '@angular/router';
 import { FooterComponent } from '../footer/footer.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-events',
@@ -21,7 +22,8 @@ import { FooterComponent } from '../footer/footer.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    FooterComponent],
+    FooterComponent,
+    MatButtonModule],
   templateUrl: './events.component.html',
   styleUrl: './events.component.scss'
 })
@@ -70,8 +72,8 @@ export class EventsComponent {
         }
         else{
           this.user_is_artist=2;
-          this.username=user.name;
           this.refreshEvents();
+          this.username=user.name;
         }
       }
     });
@@ -143,7 +145,6 @@ export class EventsComponent {
     this.eventService.getMyEvents(this.user_artist_name).subscribe({
       next: (data) => {
         this.myevents = data;
-        console.log(this.publicevents);
       }, error: (err) => {
         console.log(err);
       }
@@ -155,7 +156,7 @@ export class EventsComponent {
     this.eventService.deleteEvent(name).subscribe({
       next: (data) => {
         console.log(data);
-        this.refreshEvents();
+        this.refreshMyEvents();
       }, error: (err) => {
         console.log(err);
       }

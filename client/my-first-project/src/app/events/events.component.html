@@ -22,7 +22,7 @@
     <div class="right-side">
         <div class="cardok">
             <mat-grid-list cols="2">
-                <mat-grid-tile *ngFor="let event of publicevents">
+                <mat-grid-tile *ngFor="let event of myevents">
                     <mat-card>
                         <mat-card-content>
                             <div>
@@ -47,26 +47,53 @@
 </div>
 
 <div class="public-events" *ngIf="user_is_artist==0 || user_is_artist==2">
-    <mat-grid-list cols="3">
-        <mat-grid-tile *ngFor="let event of publicevents">
+    <mat-grid-list cols="4">
+        <mat-grid-tile *ngFor="let event of publicevents.slice(0,4)">
             <mat-card>
                 <mat-card-content>
                     <div>
                         <img mat-card-image src="{{event.img_source}}"/>
                     </div>
-                    <p><b>Esemény neve: {{event.name}}</b></p>
-                    <p><b>Művész neve: {{event.artist_name}}</b></p>
+                    <p><b>{{event.name}}</b></p>
+                    <!-- <p><b>Művész neve: {{event.artist_name}}</b></p> -->
+                    <p><b>Részvételi díj: {{event.price}}Ft</b></p>
+                    <p>Dátum: {{ event.date | date: 'yyyy-MM-dd' }}</p>
+                    <p>{{event.description}}</p>
+                    <p>Szabad helyek száma: {{event.max_attendees}}</p>  
+                    <!-- <p>Jelentkezők: {{event.attendees}}</p> -->
+                    <!-- <p *ngIf="event.attendees && event.attendees.indexOf(username)!==-1">Te már benne vagy</p> -->
+                </mat-card-content>
+                <mat-card-actions>
+                    <button *ngIf="user_is_artist==0" mat-flat-button (click)="navigate('/login')">Jelentkezés</button>
+                    <button *ngIf="user_is_artist==2 && event.attendees && (event.attendees.indexOf(username) == -1)" mat-flat-button (click)="signmeup(event.name,event.attendees,event.max_attendees)">Jelentkezés</button>
+                    <button *ngIf="user_is_artist==2 && event.attendees && !(event.attendees.indexOf(username) ==-1)" mat-flat-button color="warn" (click)="signmeoff(event.name,event.attendees,event.max_attendees)">Lejelentkezés</button>
+                 </mat-card-actions>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
+<div class="public-events" *ngIf="user_is_artist==0 || user_is_artist==2">
+    <mat-grid-list cols="4">
+        <mat-grid-tile *ngFor="let event of publicevents.slice(4,8)">
+            <mat-card>
+                <mat-card-content>
+                    <div>
+                        <img mat-card-image src="{{event.img_source}}"/>
+                    </div>
+                    <p><b>{{event.name}}</b></p>
+                    <!-- <p><b>Művész neve: {{event.artist_name}}</b></p> -->
                     <p><b>Részvételi díj: {{event.price}}Ft</b></p>
                     <p>Dátuma: {{ event.date | date: 'yyyy-MM-dd' }}</p>
                     <p>Esemény leírása: {{event.description}}</p>
                     <p>Szabad helyek száma: {{event.max_attendees}}</p>  
                     <!-- <p>Jelentkezők: {{event.attendees}}</p> -->
-                    <p *ngIf="event.attendees.indexOf(username)>0">Te már benne vagy</p>
+                    <!-- <p *ngIf="event.attendees && event.attendees.indexOf(username)>0">Te már benne vagy</p> -->
                 </mat-card-content>
                 <mat-card-actions>
-                    <button *ngIf="user_is_artist==0" mat-flat-button color="warn" (click)="navigate('/login')">Jelentkezés</button>
-                    <button *ngIf="user_is_artist==2 && !(event.attendees.indexOf(username)>0)" mat-flat-button color="warn" (click)="signmeup(event.name,event.attendees,event.max_attendees)">Jelentkezés</button>
-                    <button *ngIf="user_is_artist==2 && event.attendees.indexOf(username)>0" mat-flat-button color="warn" (click)="signmeoff(event.name,event.attendees,event.max_attendees)">Lejelentkezés</button>
+                    <button *ngIf="user_is_artist==0" mat-flat-button (click)="navigate('/login')">Jelentkezés</button>
+                    <button *ngIf="user_is_artist==2 && event.attendees && (event.attendees.indexOf(username) == -1)" mat-flat-button (click)="signmeup(event.name,event.attendees,event.max_attendees)">Jelentkezés</button>
+                    <button *ngIf="user_is_artist==2 && event.attendees && !(event.attendees.indexOf(username) ==-1)" mat-flat-button color="warn" (click)="signmeoff(event.name,event.attendees,event.max_attendees)">Lejelentkezés</button>
                 </mat-card-actions>
             </mat-card>
         </mat-grid-tile>

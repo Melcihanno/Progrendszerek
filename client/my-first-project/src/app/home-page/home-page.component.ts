@@ -52,4 +52,5 @@ export class HomePageComponent {
     this.paintingService.setSelectedPainting(painting);
     this.router.navigateByUrl('/painting-watcher');
   }
+
 }

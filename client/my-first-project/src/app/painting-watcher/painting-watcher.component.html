@@ -21,5 +21,6 @@
             <button mat-stroked-button color="primary" *ngIf="user_state==2 && userbasket.indexOf(selected_painting.name) !==-1" disabled>Kosárban van</button>
             <button mat-stroked-button color="warn" (click)="goBack()">Vissza</button>
         </div>
+        <!-- <button (click)="deletePainting(selected_painting.name)">Törlés</button> -->
     </div>
 </div>

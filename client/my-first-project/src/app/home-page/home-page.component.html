@@ -5,14 +5,11 @@
 <div class="cimszalag">    
     <h1>Újdonságok</h1>
 </div>
+
 <div class="cardok">
     <mat-grid-list cols="4">
-        <mat-grid-tile *ngFor="let painting of paintings">
+        <mat-grid-tile *ngFor="let painting of paintings.slice(0,8)">
             <mat-card>
-                <!-- <mat-card-header>
-                    <mat-card-title>{{painting.name}}</mat-card-title>
-                    <mat-card-subtitle>{{painting.description}}</mat-card-subtitle>
-                </mat-card-header> -->
                 <mat-card-content>
                     <div>
                         <img mat-card-image src="{{painting.source}}"/>
@@ -27,9 +24,12 @@
         </mat-grid-tile>
     </mat-grid-list>
 </div>
+
+
 <div class="cimszalag">    
     <h1>Művészeink</h1>
 </div>
+
 <div class="container">
     <div class="left-side">
     <p><i>Bob Ross</i></p>
@@ -45,14 +45,16 @@
     <p>
         A műsora és stílusa örökre nyomot hagyott a művészet világában, és még évekkel azután is, hogy elhunyt, Bob Ross és művei továbbra is inspirálják és örömet okoznak az embereknek világszerte.
     </p>
+    <button id="alkotasok-button" (click)="navigate('/collections')">Alkotások</button>
     </div>
     <div class="right-side">
         <img src="https://globalnews.ca/wp-content/uploads/2023/09/GettyImages-50467803.jpg?quality=85&strip=all&w=1200"/>
     </div>
 </div>
+<!-- 
 <div class="cimszalag">    
     <button>Vásárlás</button>
-</div>
+</div> -->
 
 <br>
 <div class="cimszalag">    
@@ -60,12 +62,8 @@
 </div>
 <div class="cardok">
     <mat-grid-list cols="4">
-        <mat-grid-tile *ngFor="let painting of paintings">
+        <mat-grid-tile *ngFor="let painting of paintings.slice(8,16)">
             <mat-card>
-                <!-- <mat-card-header>
-                    <mat-card-title>{{painting.name}}</mat-card-title>
-                    <mat-card-subtitle>{{painting.description}}</mat-card-subtitle>
-                </mat-card-header> -->
                 <mat-card-content>
                     <div>
                         <img mat-card-image src="{{painting.source}}"/>

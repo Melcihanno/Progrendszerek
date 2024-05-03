@@ -83,4 +83,15 @@ export class PaintingWatcherComponent{
   navigate(to: string) {
     this.router.navigateByUrl(to);
   }
+
+  deletePainting(painting_name: string){
+    console.log(painting_name)
+    this.userService.deletePainting(painting_name).subscribe({
+      next: (data) => {
+        console.log(data);
+      }, error: (err) => {
+        console.log(err);
+      }
+    });
+  }
 }
