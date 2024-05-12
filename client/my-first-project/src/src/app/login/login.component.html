@@ -1,0 +1,27 @@
+<div id="header">
+    <app-top-menu></app-top-menu>
+</div>
+<div id="cimszalag">    
+    <h1><b>Bejelentkezés:</b></h1>
+</div>
+<div class="login-container">
+    <form class="login-form" (ngSubmit)="login()">
+        <input [(ngModel)]="email" name="email" type="email" placeholder="Email" required />
+        <input [(ngModel)]="password" name="password" type="password" placeholder="Password" required />
+        <div class="buttons">
+            <button type="submit">Bejelentkezés</button>
+        </div>
+        <div class="buttons">
+            <button type="button" (click)="navigate('/signup')">Regisztráció</button>
+        </div>
+        <div *ngIf="errorMessage">
+            <p>{{errorMessage}}</p>
+        </div>
+        <div class="overlay" *ngIf="isLoading">
+            <mat-spinner></mat-spinner>
+        </div>
+    </form>
+</div>
+<div class="back_container">
+    <button id="goback-button" type="button" (click)="goBack()">Vissza</button>
+</div>

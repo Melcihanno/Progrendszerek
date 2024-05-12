@@ -1,0 +1,132 @@
+#header{
+    padding-bottom: 250px;
+}
+#cimszalag {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    padding-bottom: 100px;
+    font-weight: bold;
+    font-size: 42px;
+}
+
+mat-card{
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+    align-items: center;
+    // background-color: black;
+    width: 90%;
+    height: 100%;
+    margin-bottom: 100px;
+    margin-top: 100px;
+    padding: 0px;
+    border: 1px solid rgb(223, 223, 223);
+    font-weight: lighter;
+    border-radius: 2px;
+}
+
+mat-card img{
+    max-width: 300px;
+    max-height: 200px;
+}
+
+.cardok mat-card {
+    // position: relative;
+    border: 1px solid rgb(223, 223, 223);
+    border-radius: 2px;
+}
+
+.cardok mat-card mat-card-actions {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.public-events mat-card {
+    transition: transform 0.3s ease;
+}
+
+.public-events mat-card:hover {
+    transform: scale(0.95);
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    max-width: 400px;
+    border: 1px solid #000000;
+    padding: 20px;
+    gap: 10px;
+}
+
+.login-form input {
+    padding: 10px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    outline: none;
+}
+
+.login-form .buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.login-form button {
+    cursor: pointer;
+    border: 1px solid black;
+    width: 100%;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+}
+
+.login-form button:hover {
+    background-color: rgb(69,69,69);
+}
+
+.login-form button[type="button"] {
+    background-color: rgb(0, 0, 0);
+    border: 1px solid black;
+}
+
+.login-form button[type="button"]:hover {
+    background-color: rgb(69,69, 69);
+}
+
+.login-form button[type="reset"] {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid black;
+}
+
+.login-form button[type="reset"]:hover {
+    background-color: rgb(69,69,69);
+}
+
+.container {
+    display: flex; /* Flex layout */
+  }
+  
+.left-side{
+width: 30%; /* Mindkét div 50%-os szélességű legyen */
+box-sizing: border-box; /* A padding és a border is hozzá tartozzon a mérethez */
+}
+.right-side{
+    width:70%;
+    height: 100%;
+}
+
+.public-events{
+    margin-top:50px;
+    margin-bottom: 50px;
+    //  height: 40lh;
+}

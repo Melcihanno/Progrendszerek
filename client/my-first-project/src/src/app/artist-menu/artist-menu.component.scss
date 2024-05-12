@@ -1,0 +1,105 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    max-width: 400px;
+    border: 1px solid #000000;
+    padding: 20px;
+    gap: 10px;
+}
+
+.login-form input {
+    padding: 10px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    outline: none;
+}
+
+.login-form .buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.login-form button {
+    cursor: pointer;
+    border: 1px solid black;
+    width: 100%;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+}
+
+.login-form button:hover {
+    background-color: rgb(69,69,69);
+}
+
+.login-form button[type="button"] {
+    background-color: rgb(0, 0, 0);
+    border: 1px solid black;
+}
+
+.login-form button[type="button"]:hover {
+    background-color: rgb(69,69, 69);
+}
+
+.login-form button[type="reset"] {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid black;
+}
+
+.login-form button[type="reset"]:hover {
+    background-color: rgb(69,69,69);
+}
+
+.invalid-input {
+    border-color: #ff0000 !important;
+    border-width: 3px !important;
+    background-color: #ffdddd;
+}
+
+#header{
+    padding-bottom: 250px;
+}
+
+table{
+    width: 100%;
+    margin-top: 20px;
+    border: 1px solid black;
+}
+th,td{
+    border: 1px solid black;
+} 
+.table-container {
+    margin: 20px;
+}
+
+.container {
+    display: flex; /* Flex layout */
+  }
+  
+.left-side{
+width: 30%; /* Mindkét div 50%-os szélességű legyen */
+box-sizing: border-box; /* A padding és a border is hozzá tartozzon a mérethez */
+}
+.right-side{
+    width:70%;
+    height: 100%;
+}
+
+mat-card{
+    background-color: lightblue;
+    width: 90%;
+    height: 90%;
+}
+
+img{
+    border-radius: 10px;
+    max-height: 200px;
+}
+

@@ -1,0 +1,57 @@
+
+.headbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #000000;
+    color:white; /* opcionális: háttérszín beállítása */
+    z-index: 999; 
+    transition: height 0.3s ease;
+}
+
+.headbar h1 {
+    margin: 10px 0;
+    font-family: "Georgia", Georgia, serif;
+    padding-top:20px;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.headbar .buttons {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    padding-inline: 20px;
+    padding:20px;
+}
+
+.headbar .buttons mat-icon {
+    margin-top: 10px;
+}
+
+.headbar .menus {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.headbar .menus h2 {
+    margin: 0 10px;
+    font-family: "Georgia", Georgia, serif;
+    font-size:30px;
+    padding: 5px;
+}
+
+h2:hover{
+    color:rgb(161, 161, 161);
+}
+mat-icon{
+    margin: 10px;
+}

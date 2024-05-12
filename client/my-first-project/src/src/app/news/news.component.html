@@ -1,0 +1,41 @@
+<div id="header">
+    <app-top-menu></app-top-menu>
+</div>
+<div id="cimszalag">    
+    <h1><b>Híreink</b></h1>
+</div>
+<div class="container" *ngIf="user_is_artist==1">
+    <div class="left-side">
+        <h1>Hír hozzáadása</h1>
+        <form [formGroup]="newsForm" (ngSubmit)="onSubmit()" class="login-form">
+            <input formControlName="title" type="text" placeholder="Cím" required  />
+            <input formControlName="article" type="textarea" placeholder="Cikk" required/>
+            <input formControlName="date" type="date" placeholder="Hír dátuma" required/>
+            <div class="buttons">
+                <button type="submit">Feltöltés</button>
+            </div>
+        </form>
+        <button (click)="goBack()">Vissza</button>
+    </div>
+    <div class="right-side">
+        <div *ngFor="let news of publicNews">
+            <p><b>Cím: {{news.title}}</b></p>
+            <p><b>Hír: {{news.article}}</b></p>
+            <p>Dátuma: {{news.date}}</p>
+            <button (click)="deleteNews(news.title)">Törlés</button>
+            <hr>
+        </div>
+    </div>
+</div>
+
+<div class="news" *ngIf="user_is_artist!=1">
+    <div class="hir" *ngFor="let news of publicNews">
+        <p class="title"><b>{{news.title}}</b></p>
+        <p>{{news.article}}</p>
+        <p>Közzétéve: {{news.date| date: 'yyyy-MM-dd'}}</p>
+        <hr>
+    </div>
+</div>
+
+<app-footer>
+</app-footer>
