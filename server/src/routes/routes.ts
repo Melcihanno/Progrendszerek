@@ -4,6 +4,7 @@ import { PassportStatic } from 'passport';
 import { User } from '../model/User';
 import { Painting } from '../model/Painting';
 import { Event } from '../model/Events';
+import { News } from '../model/News';
 
 
 export const configureRoutes = (passport: PassportStatic, router: Router): Router => {
@@ -313,6 +314,43 @@ export const configureRoutes = (passport: PassportStatic, router: Router): Route
         }).catch(error => {
             res.status(500).send(error);
         })
+    });
+
+    router.post('/registerNews',(req:Request,res:Response)=>{
+        const title = req.body.title;
+        const article = req.body.article;
+        const date = req.body.date;
+        const news = new News({title: title,article:article,date:date});
+        news.save().then(data => {
+            res.status(200).send(data);
+        }).catch(error => {
+            res.status(500).send(error);
+        })
+    });
+
+    router.get('/getAllNews', (req: Request, res: Response) => {
+        const query = News.find();
+        query.then(data => {
+            res.status(200).send(data);
+        }).catch(error => {
+            console.log(error);
+            res.status(500).send('Internal server error.');
+        })
+    });
+
+    router.delete('/deleteNews', (req: Request, res: Response) => {
+        if (req.isAuthenticated()) {
+            const title = req.query.title;
+            const query = News.deleteOne({title:title});
+            query.then(data => {
+                res.status(200).send(data);
+            }).catch(error => {
+                console.log(error);
+                res.status(500).send('Internal server error.');
+            })
+        } else {
+            res.status(500).send('User is not logged in.');
+        }
     });
 
     return router;

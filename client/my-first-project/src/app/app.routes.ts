@@ -12,6 +12,7 @@ export const routes: Routes = [
     { path: 'events', loadComponent: () => import('./events/events.component').then((c) => c.EventsComponent) },
     { path: 'collections', loadComponent: () => import('./collections/collections.component').then((c) => c.CollectionsComponent) },
     { path: 'about', loadComponent: () => import('./about/about.component').then((c) => c.AboutComponent) },
+    { path: 'news', loadComponent: () => import('./news/news.component').then((c) => c.NewsComponent) },
     { path: 'basket', loadComponent: () => import('./basket/basket.component').then((c) => c.BasketComponent), canActivate: [authGuard] },
 
     { path: '**', redirectTo: 'home-page' }
