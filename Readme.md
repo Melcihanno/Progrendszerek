@@ -32,3 +32,13 @@ Futtassa a következő parancsot a MongoDB Docker Image indításához:
     -docker run -d -p 27017:27017 --name mongodb mongo
 
 Most már elindíthatja a projektet és tesztelheti az alkalmazást!
+
+
+Új leírás:
+
+Jenkins elindítása:
+docker pull jenkins/jenkins
+docker run -it --rm -p 8080:8080 -p 50000:50000 -v ./jenkins_home:/var/jenkins_home jenkins/jenkins:lts
+
+docker pull internetsystemsconsortium/bind9
+Docker compose up

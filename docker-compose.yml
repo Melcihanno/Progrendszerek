@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  bind9:
+    build:
+      context: .
+      dockerfile: Dockerfile_bind9
+    ports:
+      - "5300:53/tcp"
+      - "5300:53/udp"
+    volumes:
+      - ./bind_config:/etc/bind
+    networks:
+      app_network:
+        ipv4_address: 172.30.0.2
+    cap_add:
+      - NET_ADMIN
+
+  angular-app:
+    build:
+      context: .
+      dockerfile: Dockerfile_angular
+    ports:
+      - "4200:4200"
+    networks:
+      app_network:
+        ipv4_address: 172.30.0.3
+    cap_add:
+      - NET_ADMIN
+      
+  mongo-app:
+    build:
+      context: .
+      dockerfile: Dockerfile_mongo
+    ports:
+      - "6000:27017"
+    networks:
+      app_network:
+        ipv4_address: 172.30.0.4
+    cap_add:
+      - NET_ADMIN
+
+networks:
+  app_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.30.0.0/16

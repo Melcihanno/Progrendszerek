@@ -1,0 +1,19 @@
+FROM node:20
+ 
+RUN apt-get update
+RUN apt-get install -y iptables
+
+COPY firewall_settings/angular_firewall.sh /firewall.sh
+RUN chmod +x /firewall.sh
+
+COPY ./client/my-first-project /app
+WORKDIR /app
+#RUN git clone https://github.com/Melcihanno/Progrendszerek.git
+#WORKDIR /app/client/my-first-project/
+
+RUN npm install
+RUN npm install -g @angular/cli
+RUN ng build
+EXPOSE 4200
+
+CMD ["/bin/bash","-c","/firewall.sh && ng serve --host 0.0.0.0"]

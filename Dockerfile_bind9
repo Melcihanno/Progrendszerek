@@ -1,0 +1,9 @@
+FROM internetsystemsconsortium/bind9:9.18
+
+RUN apk add iptables
+
+COPY firewall_settings/bind9_firewall.sh /firewall.sh
+
+RUN chmod +x /firewall.sh
+
+ENTRYPOINT ["/bin/sh","-c","/firewall.sh && /usr/sbin/named -g -c /etc/bind/named.conf -u bind"]

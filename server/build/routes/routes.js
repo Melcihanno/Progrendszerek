@@ -14,6 +14,7 @@ const main_class_1 = require("../main-class");
 const User_1 = require("../model/User");
 const Painting_1 = require("../model/Painting");
 const Events_1 = require("../model/Events");
+const News_1 = require("../model/News");
 const configureRoutes = (passport, router) => {
     router.get('/', (req, res) => {
         let myClass = new main_class_1.MainClass();
@@ -243,7 +244,8 @@ const configureRoutes = (passport, router) => {
         const max_attendees = req.body.max_attendees;
         const img_source = req.body.img_source;
         const price = req.body.price;
-        const painting = new Events_1.Event({ name: name, description: description, artist_name: artist_name, date: date, max_attendees: max_attendees, img_source: img_source, price: price });
+        const attendees = 'undefined';
+        const painting = new Events_1.Event({ name: name, description: description, artist_name: artist_name, date: date, max_attendees: max_attendees, img_source: img_source, price: price, attendees: attendees });
         painting.save().then(data => {
             res.status(200).send(data);
         }).catch(error => {
@@ -309,6 +311,41 @@ const configureRoutes = (passport, router) => {
         }).catch(error => {
             res.status(500).send(error);
         });
+    });
+    router.post('/registerNews', (req, res) => {
+        const title = req.body.title;
+        const article = req.body.article;
+        const date = req.body.date;
+        const news = new News_1.News({ title: title, article: article, date: date });
+        news.save().then(data => {
+            res.status(200).send(data);
+        }).catch(error => {
+            res.status(500).send(error);
+        });
+    });
+    router.get('/getAllNews', (req, res) => {
+        const query = News_1.News.find();
+        query.then(data => {
+            res.status(200).send(data);
+        }).catch(error => {
+            console.log(error);
+            res.status(500).send('Internal server error.');
+        });
+    });
+    router.delete('/deleteNews', (req, res) => {
+        if (req.isAuthenticated()) {
+            const title = req.query.title;
+            const query = News_1.News.deleteOne({ title: title });
+            query.then(data => {
+                res.status(200).send(data);
+            }).catch(error => {
+                console.log(error);
+                res.status(500).send('Internal server error.');
+            });
+        }
+        else {
+            res.status(500).send('User is not logged in.');
+        }
     });
     return router;
 };
