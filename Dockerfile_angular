@@ -1,0 +1,24 @@
+# Alap image
+FROM node:20
+
+RUN apt-get update
+RUN apt-get install -y iptables
+
+COPY firewall_settings/angular_firewall.sh /firewall.sh
+RUN chmod +x /firewall.sh
+
+WORKDIR /app
+
+RUN git clone https://github.com/Melcihanno/Progrendszerek.git .
+
+RUN npm install -g @angular/cli
+
+WORKDIR /app/client/my-first-project
+
+RUN npm install
+
+RUN ng build
+
+CMD ["ng", "serve", "--host", "0.0.0.0", "--port", "4200"]
+
+EXPOSE 4200

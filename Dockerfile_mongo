@@ -1,0 +1,28 @@
+FROM mongo
+
+# Munkakönyvtár beállítása
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y \
+    git \
+    curl \
+    && curl -sL https://deb.nodesource.com/setup_18.x | bash - \
+    && apt-get install -y nodejs \
+    && npm install -g npm@latest
+# Repo klónozása
+RUN git clone https://github.com/Melcihanno/Progrendszerek.git .
+
+# Munkakönyvtár váltás az Angular projekt mappájába
+WORKDIR /app/server
+
+# Függőségek telepítése
+RUN npm install
+
+# Build parancs (opcionális, de hasznos a statikus fájlok előállításához)
+RUN npm run build
+
+# Angular szerver futtatása
+CMD ["npm","start"]
+
+# Port exposálása
+EXPOSE 27017
